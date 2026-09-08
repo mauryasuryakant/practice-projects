@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 
-const Addcard = () => {
+const Addcard = ( {setProducts} ) => {
   console.log("Addcard rendering...");
 
   const {
@@ -9,13 +9,14 @@ const Addcard = () => {
     reset,
     formState: { errors },
   } = useForm({
-    mode: "onChange"
+    mode: "onChange",
   });
   // console.log(errors)
 
   const formSubmit = (data) => {
-    console.log(data);
-    reset()
+    // console.log(data);
+    setProducts(prev => [...prev, {data}])
+    reset();
   };
 
   const resetForm = () => {
@@ -51,8 +52,8 @@ const Addcard = () => {
             required: "Email is required",
             pattern: {
               value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-              message: "Please enter valid email"
-            }
+              message: "Please enter valid email",
+            },
           })}
           className="outline-0 rounded p-2 bg-[#3f3d42]"
           type="email"

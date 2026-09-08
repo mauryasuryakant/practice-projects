@@ -5,8 +5,6 @@ import Addcard from "./components/Addcard";
 import Hook from "./components/Hook";
 
 const App = () => {
-  // const arr = [1, 2, 3, 4, 5];
-
   const [toggle, setToggle] = useState(true);
   const [products, setProducts] = useState([]);
 
@@ -21,8 +19,8 @@ const App = () => {
           </div>
         ) : (
           <div className="p-5 flex gap-4 flex-wrap">
-            {products.map((products, index) => (
-              <Card key={index} name={products} />
+            {products.map((e, index) => (
+              <Card key={index} name={e} />
             ))}
           </div>
         )}
